@@ -127,3 +127,16 @@ const addEmployee =() =>{
         teamArray.push(employee);
     })
 };
+
+const writeFile = profileData => {
+    fs.writeFile('./dist/index.html', profileData, err => {
+        if (err){
+            console.log(err);
+            return;
+        }
+        else {
+            console.log('Profile Created!')
+        }
+    });
+};
+
