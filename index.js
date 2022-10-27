@@ -115,7 +115,7 @@ const questions = [
 const addEmployee =() =>{
     return inquirer.prompt(questions)
     .then(employeeProfile=> {
-        let {role, name, id, email github, school, officeNumber} =employeeProfile;
+        let {role, name, id, email, github, school, officeNumber} =employeeProfile;
         let employee;
         if (role === 'Manager'){
             employee = new Manager(name, id, email, officeNumber);
@@ -149,7 +149,10 @@ const writeFile = profileData => {
 };
 
 addEmployee().then(teamArray=> {
-    return generateProfile(teamArray);
-
-})
+    return generateProfiles(teamArray);
+}).then(dataHTML=>{
+    return writeFile(dataHTML);
+}).catch (err=>{
+    console.log(err);
+});
 
