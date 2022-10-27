@@ -78,14 +78,52 @@ const questions = [
         type:'input',
         name:'github',
         message:"What is the employee's github username?",
-        when:(inputgithubUsername)=> inputgithubUsername.role === 'Engineer',
-        validate: inputOfficeNumber => {
-            if (inputOfficeNumber) {
+        when:(inputGithubUsername)=> inputGithubUsername.role === 'Engineer',
+        validate: inputGithubUsername=> {
+            if (inputGithubUsername) {
                 return true;
             } else {
-                console.log("Enter office numer of manager to proceed!!");
+                console.log("Enter github username of engineer to proceed!!");
                 return false;
             }     
         }
     },
-]
+    {
+        type:'input',
+        name:'school',
+        message:"What is the intern's school name?",
+        when:(inputSchoolName)=> inputSchoolName.role === 'Intern',
+        validate: inputSchoolName=> {
+            if (inputSchoolName) {
+                return true;
+            } else {
+                console.log("Enter school name of intern to proceed!!");
+                return false;
+            }     
+        }
+    },
+    {
+        type:'confirm',
+        name:'add new employee',
+        message: "Add another employee?",
+        default: false
+    }
+];
+
+const addEmployee =() =>{
+    return inquirer.prompt(questions)
+    .then(employeeProfile=> {
+        let {role, name, id, email github, school, officeNumber} =employeeProfile;
+        let employee;
+        if (role === 'Manager'){
+            employee = new Manager(name, id, email, officeNumber);
+        }
+        if (role === 'Engineer'){
+            employee = new Engineer(name, id, email, github);
+        }
+        if (role === 'Intern'){
+            employee = new Intern(name, id, email, school);
+        }
+        teamArray.push(employee);
+    })
+};
