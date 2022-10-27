@@ -9,13 +9,6 @@ const teamArray = [];
 const generateProfiles = require('./src/generateProfiles');
 
 
-function init() {
-    renderHTML();
-    addEmployee();
-}
-
-init();
-
 const questions = [
     {
         type:'list',

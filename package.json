@@ -1,0 +1,26 @@
+{
+  "name": "challenge10_oopteamprofile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pppreap/challenge10_OOPteamprofile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pppreap/challenge10_OOPteamprofile/issues"
+  },
+  "homepage": "https://github.com/pppreap/challenge10_OOPteamprofile#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
