@@ -6,6 +6,8 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 const teamArray = [];
+const generateProfiles = require('./src/generateProfiles');
+
 
 function init() {
     renderHTML();
@@ -104,7 +106,7 @@ const questions = [
     },
     {
         type:'confirm',
-        name:'add new employee',
+        name:'addNewEmployee',
         message: "Add another employee?",
         default: false
     }
@@ -125,6 +127,12 @@ const addEmployee =() =>{
             employee = new Intern(name, id, email, school);
         }
         teamArray.push(employee);
+
+     if (employeeProfile.addNewEmployee) {
+        return addEmployee(teamArray);
+     } else {
+        return teamArray;
+     }
     })
 };
 
@@ -139,4 +147,9 @@ const writeFile = profileData => {
         }
     });
 };
+
+addEmployee().then(teamArray=> {
+    return generateProfile(teamArray);
+
+})
 
